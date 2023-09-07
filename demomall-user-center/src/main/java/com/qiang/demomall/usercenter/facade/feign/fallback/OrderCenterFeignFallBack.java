@@ -1,4 +1,4 @@
-package com.qiang.demomall.usercenter.domain.userinfo.facade.feign.fallback;
+package com.qiang.demomall.usercenter.facade.feign.fallback;
 
 /**
  * @description 订单中心Feign断路器回调

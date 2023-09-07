@@ -1,9 +1,9 @@
-package com.qiang.demomall.usercenter.domain.userinfo.facade.feign;
+package com.qiang.demomall.usercenter.facade.feign;
 
 import com.qiang.demomall.common.dto.ordercenter.OrderInfoDTO;
 import com.qiang.demomall.common.request.ordercenter.CreateOrderReq;
 import com.qiang.demomall.common.response.MallResponse;
-import com.qiang.demomall.usercenter.domain.userinfo.facade.feign.config.OrderFeignConfiguration;
+import com.qiang.demomall.usercenter.facade.feign.config.OrderFeignConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;

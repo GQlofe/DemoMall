@@ -1,11 +1,14 @@
 package com.qiang.demomall.usercenter.repository;
 
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.qiang.demomall.usercenter.domain.userinfo.model.UserInfo;
 import com.qiang.demomall.usercenter.repository.dao.UserDao;
 import com.qiang.demomall.usercenter.repository.po.UserPO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * @description 用户信息存储类
@@ -34,5 +37,29 @@ public class UserInfoRepository {
 
         return userInfo;
 
+    }
+
+    /**
+     * 获取用户信息模型
+     * @param userName 用户名
+     * @param password 密码
+     * @return 用户信息
+     */
+    public UserInfo getUserInfo(String userName, String password) {
+
+        LambdaQueryChainWrapper<UserPO> query = userDao.lambdaQuery()
+                .eq(UserPO::getUserName, userName)
+                .eq(UserPO::getPassword, password);
+
+        Optional<UserPO> opt = query.oneOpt();
+
+        if (opt.isEmpty()) {
+            log.info("用户信息不存在，userName={}", userName);
+            return null;
+        }
+
+        UserPO userPO = opt.get();
+
+        return UserInfo.from(userPO);
     }
 }

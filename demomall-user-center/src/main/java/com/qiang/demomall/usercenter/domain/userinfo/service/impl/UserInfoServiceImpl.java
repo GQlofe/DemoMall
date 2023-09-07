@@ -1,6 +1,8 @@
 package com.qiang.demomall.usercenter.domain.userinfo.service.impl;
 
 import com.qiang.demomall.common.dto.usercenter.UserInfoDTO;
+import com.qiang.demomall.common.enums.ErrorCodeEnum;
+import com.qiang.demomall.common.exceptions.usercenter.UserAuthException;
 import com.qiang.demomall.usercenter.domain.userinfo.model.UserInfo;
 import com.qiang.demomall.usercenter.domain.userinfo.service.UserInfoService;
 import com.qiang.demomall.usercenter.repository.UserInfoRepository;
@@ -28,5 +30,21 @@ public class UserInfoServiceImpl implements UserInfoService {
     public UserInfoDTO getUserInfo(Long uid) {
         UserInfo userInfo = userInfoRepository.getUserInfo(uid);
         return userInfo.convertTo();
+    }
+
+    /**
+     * 获取用户信息
+     * @param userName 用户名
+     * @param password 密码
+     * @return 用户信息模型
+     */
+    @Override
+    public UserInfo getUserInfo(String userName, String password) {
+
+        UserInfo userInfo = userInfoRepository.getUserInfo(userName, password);
+        if (userInfo == null){
+            throw new UserAuthException(ErrorCodeEnum.ERROR_2001);
+        }
+        return userInfo;
     }
 }

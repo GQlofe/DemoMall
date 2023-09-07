@@ -67,6 +67,19 @@ public class MallResponse<T> implements Serializable {
 
     /**
      * 失败
+     * @param errorCode 错误码
+     * @param message 错误信息
+     * @return response
+     */
+    public static <T> MallResponse<T> fail(ErrorCodeEnum errorCode, String message) {
+        MallResponse<T> response = new MallResponse<>();
+        response.setCode(errorCode.getCode());
+        response.setMessage(message);
+        return response;
+    }
+
+    /**
+     * 失败
      * @param e 异常
      * @return response
      */

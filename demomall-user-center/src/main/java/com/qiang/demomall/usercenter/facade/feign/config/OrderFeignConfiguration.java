@@ -1,4 +1,4 @@
-package com.qiang.demomall.usercenter.domain.userinfo.facade.feign.config;
+package com.qiang.demomall.usercenter.facade.feign.config;
 
 import org.springframework.context.annotation.Configuration;
 
