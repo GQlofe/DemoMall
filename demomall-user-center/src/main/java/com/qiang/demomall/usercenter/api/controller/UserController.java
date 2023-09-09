@@ -43,6 +43,7 @@ public class UserController {
         UserInfoDTO userInfoDTO = applicationService.getUserInfo(req.getUid());
 
         log.info(userInfoDTO.toString());
+
         return MallResponse.success(userInfoDTO);
     }
 }
