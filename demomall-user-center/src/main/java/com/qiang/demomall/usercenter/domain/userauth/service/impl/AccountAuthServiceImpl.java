@@ -44,11 +44,16 @@ public class AccountAuthServiceImpl implements UserAuthService {
         // 获取用户信息
         UserInfo userInfo = userInfoRepository.getUserInfo(userAuthDTO.getUserName(), userAuthDTO.getPassword());
 
-        // 第1步，先登录上
+        // 第1步，通过uid进行登录
         StpUtil.login(userInfo.getUid());
 
         // 第2步，获取 Token  相关参数
-        return StpUtil.getTokenInfo();
+        SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
+
+        // 第3步，设置session数据uid
+        StpUtil.getSession().set("uid",userInfo.getUid());
+
+        return tokenInfo;
 
     }
 

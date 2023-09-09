@@ -1,5 +1,7 @@
 package com.qiang.demomall.usercenter.api.controller;
 
+import com.qiang.demomall.common.context.ContextHolder;
+import com.qiang.demomall.common.context.UserContext;
 import com.qiang.demomall.common.dto.usercenter.UserInfoDTO;
 import com.qiang.demomall.common.request.usercenter.UserInfoUidQueryReq;
 import com.qiang.demomall.common.response.MallResponse;
@@ -35,6 +37,8 @@ public class UserController {
      */
     @PostMapping(value = "getUserInfo", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public MallResponse<UserInfoDTO> getUserInfo(@RequestBody @Validated UserInfoUidQueryReq req) {
+        UserContext context = ContextHolder.get(UserContext.class);
+        log.info("getUserInfo uid={}",context.getUid());
 
         UserInfoDTO userInfoDTO = applicationService.getUserInfo(req.getUid());
 

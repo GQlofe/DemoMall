@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -108,6 +109,9 @@ public class PrintLogAop {
                 for (Object parame : parames) {
                     if (parame == null) {
                         builder.append("null").append(",");
+                        continue;
+                    }
+                    if (parame instanceof ServletRequest){
                         continue;
                     }
                     String name = parame.getClass().getName();

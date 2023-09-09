@@ -23,6 +23,7 @@
         <java.version>17</java.version>
         <spring-cloud.version>2021.0.8</spring-cloud.version>
         <alibaba-cloud.version>2021.1</alibaba-cloud.version>
+        <dubbo.version>2.7.23</dubbo.version>
 
         <lombok.version>1.18.28</lombok.version>
         <mysql.version>8.0.30</mysql.version>
@@ -68,6 +69,13 @@
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
                 <version>${alibaba-cloud.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
 
 
             <dependency>
@@ -133,6 +141,11 @@
             <dependency>
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-reactor-spring-boot-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-redis-jackson</artifactId>
                 <version>${sa-token.version}</version>
             </dependency>
 
