@@ -1,4 +1,4 @@
-package com.qiang.commoditycenter;
+package com.qiang.productcenter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
