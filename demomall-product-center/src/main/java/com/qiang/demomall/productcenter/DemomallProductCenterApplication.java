@@ -1,4 +1,4 @@
-package com.qiang.productcenter;
+package com.qiang.demomall.productcenter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

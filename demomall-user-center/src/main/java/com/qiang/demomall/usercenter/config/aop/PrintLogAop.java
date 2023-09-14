@@ -14,6 +14,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 /**
  * @description 日志打印切面类
@@ -93,7 +94,7 @@ public class PrintLogAop {
         }
 
         public static void printParams(JoinPoint jp) {
-            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
 
             String requestURI = request.getRequestURI();
 
@@ -111,7 +112,7 @@ public class PrintLogAop {
                         builder.append("null").append(",");
                         continue;
                     }
-                    if (parame instanceof ServletRequest){
+                    if (parame instanceof ServletRequest) {
                         continue;
                     }
                     String name = parame.getClass().getName();
@@ -124,7 +125,6 @@ public class PrintLogAop {
                 builder.deleteCharAt(builder.length() - 1);
             }
             log.info(builder.toString());
-            builder = null;
         }
 
         public static void printResponse(Object result, JoinPoint jp) {
@@ -136,7 +136,6 @@ public class PrintLogAop {
             builder.append(gson.toJson(result));
 
             log.info(builder.toString());
-            builder = null;
         }
     }
 }

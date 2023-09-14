@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.demomall.ordercenter.repository.mapper.OrderShopMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.qiang.demomall.ordercenter.repository.entity.OrderShopDO">
+        <id column="id" property="id" />
+        <result column="uid" property="uid" />
+        <result column="shop_id" property="shopId" />
+        <result column="total_order_id" property="totalOrderId" />
+        <result column="order_status" property="orderStatus" />
+        <result column="order_type" property="orderType" />
+        <result column="order_amount" property="orderAmount" />
+        <result column="pay_amount" property="payAmount" />
+        <result column="discount_amount" property="discountAmount" />
+        <result column="pay_no" property="payNo" />
+        <result column="pay_type" property="payType" />
+        <result column="order_time" property="orderTime" />
+        <result column="pay_time" property="payTime" />
+        <result column="source_type" property="sourceType" />
+        <result column="cancel_reason" property="cancelReason" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, uid, shop_id, total_order_id, order_status, order_type, order_amount, pay_amount, discount_amount, pay_no, pay_type, order_time, pay_time, source_type, cancel_reason, create_time, update_time
+    </sql>
+
+</mapper>

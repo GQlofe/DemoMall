@@ -3,7 +3,7 @@ package com.qiang.demomall.usercenter.repository;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.qiang.demomall.usercenter.domain.userinfo.model.UserInfo;
 import com.qiang.demomall.usercenter.repository.dao.UserDao;
-import com.qiang.demomall.usercenter.repository.po.UserPO;
+import com.qiang.demomall.usercenter.repository.entity.UserDO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,9 +31,9 @@ public class UserInfoRepository {
      */
     public UserInfo getUserInfo(Long uid) {
 
-        UserPO userPO = userDao.getById(uid);
+        UserDO userDO = userDao.getById(uid);
 
-        UserInfo userInfo = UserInfo.from(userPO);
+        UserInfo userInfo = UserInfo.from(userDO);
 
         return userInfo;
 
@@ -47,19 +47,19 @@ public class UserInfoRepository {
      */
     public UserInfo getUserInfo(String userName, String password) {
 
-        LambdaQueryChainWrapper<UserPO> query = userDao.lambdaQuery()
-                .eq(UserPO::getUserName, userName)
-                .eq(UserPO::getPassword, password);
+        LambdaQueryChainWrapper<UserDO> query = userDao.lambdaQuery()
+                .eq(UserDO::getUserName, userName)
+                .eq(UserDO::getPassword, password);
 
-        Optional<UserPO> opt = query.oneOpt();
+        Optional<UserDO> opt = query.oneOpt();
 
         if (opt.isEmpty()) {
             log.info("用户信息不存在，userName={}", userName);
             return null;
         }
 
-        UserPO userPO = opt.get();
+        UserDO userDO = opt.get();
 
-        return UserInfo.from(userPO);
+        return UserInfo.from(userDO);
     }
 }

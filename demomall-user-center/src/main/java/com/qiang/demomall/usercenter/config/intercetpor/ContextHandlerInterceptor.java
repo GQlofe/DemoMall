@@ -23,7 +23,7 @@ public class ContextHandlerInterceptor implements HandlerInterceptor {
 
         UserContext context = UserContext.builder().uid(Long.valueOf(uid)).build();
 
-        log.info("添加::线程本地变量context={}",context.toString());
+        log.info("添加::线程本地变量context={}", context.toString());
         ContextHolder.set(context);
 
         return true;
@@ -33,7 +33,7 @@ public class ContextHandlerInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         UserContext context = ContextHolder.get(UserContext.class);
+        log.info("移除::线程本地变量context={}", context.toString());
         ContextHolder.remove();
-        log.info("移除::线程本地变量context={}",context.toString());
     }
 }

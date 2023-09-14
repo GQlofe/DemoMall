@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.qiang.demomall.common.dto.usercenter.UserInfoDTO;
-import com.qiang.demomall.usercenter.repository.po.UserPO;
+import com.qiang.demomall.usercenter.repository.entity.UserDO;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -79,11 +79,11 @@ public class UserInfo {
 
     /**
      * 通过持久化对象创建领域对象
-     * @param userPO 持久化对象
+     * @param userDO 持久化对象
      * @return 领域对象
      */
-    public static UserInfo from(UserPO userPO) {
-        UserInfo userInfo = objectResolver.convertValue(userPO, UserInfo.class);
+    public static UserInfo from(UserDO userDO) {
+        UserInfo userInfo = objectResolver.convertValue(userDO, UserInfo.class);
 
         return userInfo;
     }

@@ -1,4 +1,4 @@
-package com.qiang.demomall.usercenter.repository.po;
+package com.qiang.demomall.usercenter.repository.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName("tb_user")
-public class UserPO implements Serializable {
+public class UserDO implements Serializable {
     public static final long serialVersionUID = 1L;
 
     /**

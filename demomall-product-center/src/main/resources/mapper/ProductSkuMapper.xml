@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.demomall.productcenter.repository.mapper.ProductSkuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.qiang.demomall.productcenter.repository.entity.ProductSkuDO">
+        <id column="sku_id" property="skuId" />
+        <result column="sku_name" property="skuName" />
+        <result column="description" property="description" />
+        <result column="shop_id" property="shopId" />
+        <result column="spu_id" property="spuId" />
+        <result column="status" property="status" />
+        <result column="sort" property="sort" />
+        <result column="remark" property="remark" />
+        <result column="pic_url" property="picUrl" />
+        <result column="is_delete" property="isDelete" />
+        <result column="creator" property="creator" />
+        <result column="modifier" property="modifier" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        sku_id, sku_name, description, shop_id, spu_id, status, sort, remark, pic_url, is_delete, creator, modifier, create_time, update_time
+    </sql>
+
+</mapper>

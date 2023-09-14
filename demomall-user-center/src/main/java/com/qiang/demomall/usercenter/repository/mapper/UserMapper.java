@@ -1,6 +1,6 @@
 package com.qiang.demomall.usercenter.repository.mapper;
 
-import com.qiang.demomall.usercenter.repository.po.UserPO;
+import com.qiang.demomall.usercenter.repository.entity.UserDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author qiang
  * @since 2023-08-29
  */
-public interface UserMapper extends BaseMapper<UserPO> {
+public interface UserMapper extends BaseMapper<UserDO> {
 
 }

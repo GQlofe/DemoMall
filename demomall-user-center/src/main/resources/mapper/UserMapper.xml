@@ -3,7 +3,7 @@
 <mapper namespace="com.qiang.demomall.usercenter.repository.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.qiang.demomall.usercenter.repository.po.UserPO">
+    <resultMap id="BaseResultMap" type="com.qiang.demomall.usercenter.repository.entity.UserDO">
         <id column="uid" property="uid" />
         <result column="user_name" property="userName" />
         <result column="phone_num" property="phoneNum" />

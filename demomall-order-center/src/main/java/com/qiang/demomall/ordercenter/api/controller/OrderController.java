@@ -1,4 +1,4 @@
-package com.qiang.demomall.ordercenter.controller;
+package com.qiang.demomall.ordercenter.api.controller;
 
 import com.qiang.demomall.common.dto.ordercenter.OrderInfoDTO;
 import com.qiang.demomall.common.request.ordercenter.CreateOrderReq;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class OrderController {
 
-    @RequestMapping(value = "getOrderInfo/{orderId}",method = RequestMethod.GET)
-    public MallResponse<OrderInfoDTO> getOrderInfo(@PathVariable Long orderId){
+    @RequestMapping(value = "getOrderInfo/{orderId}", method = RequestMethod.GET)
+    public MallResponse<OrderInfoDTO> getOrderInfo(@PathVariable Long orderId) {
 
 
-        log.info("orderId={}",orderId);
+        log.info("orderId={}", orderId);
         OrderInfoDTO orderInfo = OrderInfoDTO.builder().orderId(2000L).productName("矿泉水").build();
 
         return MallResponse.success(orderInfo);
@@ -29,9 +29,9 @@ public class OrderController {
     }
 
 
-    @RequestMapping(value = "createOrder",method = RequestMethod.POST,produces = {MediaType.APPLICATION_JSON_VALUE})
-    public MallResponse<OrderInfoDTO> createOrder(@RequestBody CreateOrderReq req){
-        log.info("req={}",req.toString());
+    @RequestMapping(value = "createOrder", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public MallResponse<OrderInfoDTO> createOrder(@RequestBody CreateOrderReq req) {
+        log.info("req={}", req.toString());
 
         try {
             Thread.sleep(3000);

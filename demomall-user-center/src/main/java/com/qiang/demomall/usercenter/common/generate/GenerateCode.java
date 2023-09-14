@@ -27,8 +27,9 @@ public class GenerateCode {
         String mapperDir = dir + "/mapper";
 
         String packageName = "com.qiang.demomall";
-        String moduleName = "usercenter.repository";
-        String tableName = "tb_user";
+
+        String moduleName = "productcenter.repository";
+        String tableName = "tb_product_spu";
 
 
         FastAutoGenerator.create(url, username, password)
