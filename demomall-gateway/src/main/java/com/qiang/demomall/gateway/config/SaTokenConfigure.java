@@ -1,9 +1,7 @@
 package com.qiang.demomall.gateway.config;
 
-import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.reactor.context.SaReactorSyncHolder;
 import cn.dev33.satoken.reactor.filter.SaReactorFilter;
-import cn.dev33.satoken.router.SaHttpMethod;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.stp.StpUtil;
 import com.qiang.demomall.common.enums.ErrorCodeEnum;
@@ -34,7 +32,7 @@ public class SaTokenConfigure {
                 .addExclude("/mall/user/auth/**")
 
                 // 校验前
-                .setBeforeAuth(obj -> {
+                /*.setBeforeAuth(obj -> {
                     // ---------- 设置跨域响应头 ----------
                     SaHolder.getResponse()
                             // 允许指定域访问跨域资源
@@ -50,7 +48,7 @@ public class SaTokenConfigure {
                     SaRouter.match(SaHttpMethod.OPTIONS)
                             .free(r -> System.out.println("--------OPTIONS预检请求，不做处理"))
                             .back();
-                })
+                })*/
                 // 指定[认证函数]: 每次请求执行
                 .setAuth(obj  -> {
                     // 登录校验 -- 拦截所有路由，并排除/user/doLogin 用于开放登录

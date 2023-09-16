@@ -1,8 +1,8 @@
 package com.qiang.demomall.common.request.usercenter;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * @description 用户信息uid查询请求对象

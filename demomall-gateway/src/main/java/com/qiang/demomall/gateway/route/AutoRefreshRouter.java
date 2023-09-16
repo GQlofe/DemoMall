@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -45,14 +44,16 @@ public class AutoRefreshRouter implements ApplicationRunner {
 
     private static final Map<String, NacosConfigItem> routerCache = new ConcurrentHashMap<>();
 
+    private static final String ROUTER_DATA_ID = "demomall-gateway-router";
+    private static final String GROUP = "demomall-gateway";
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         ConfigService configService = nacosConfigManager.getConfigService();
-        configService.addListener("demomall-gateway.properties", "DEV", new NacosConfigListener());
+        configService.addListener(ROUTER_DATA_ID, GROUP, new NacosConfigListener());
 
         // 初始化配置
-        String config = configService.getConfig("demomall-gateway.properties", "DEV", 5000);
+        String config = configService.getConfig(ROUTER_DATA_ID, GROUP, 5000);
 
         Map<String, RouteDefinition> map = resolveConfig(config);
         if (CollectionUtils.isEmpty(map)) {

@@ -10,6 +10,7 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        namespace: DemoMall-DEV
   datasource:
     url: jdbc:mysql://localhost:3306/demomall?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
@@ -43,41 +44,30 @@ spring:
         reset-enable: true
         login-username: admin
         login-password: admin
-  # redis配置
-  redis:
-    # Redis数据库索引（默认为0）
-    database: 0
-    # Redis服务器地址
-    host: 127.0.0.1
-    # Redis服务器连接端口
-    port: 6379
-    # Redis服务器连接密码（默认为空）
-    # password:
-    # 连接超时时间
-    timeout: 10s
-    lettuce:
-      pool:
-        # 连接池最大连接数
-        max-active: 200
-        # 连接池最大阻塞等待时间（使用负值表示没有限制）
-        max-wait: -1ms
-        # 连接池中的最大空闲连接
-        max-idle: 10
-        # 连接池中的最小空闲连接
-        min-idle: 0
 
-feign:
-  circuitbreaker:
-    enabled: true
-    alphanumeric-ids:
-      enabled: true
-  client:
-    default-to-properties: false
-    config:
-      default:
-        loggerLevel: FULL
-        connectTimeout: 2000
-        readTimeout: 5000
+  data:
+    # redis配置
+    redis:
+      # Redis数据库索引（默认为0）
+      database: 0
+      # Redis服务器地址
+      host: 127.0.0.1
+      # Redis服务器连接端口
+      port: 6379
+      # Redis服务器连接密码（默认为空）
+      # password:
+      # 连接超时时间
+      timeout: 10s
+      lettuce:
+        pool:
+          # 连接池最大连接数
+          max-active: 200
+          # 连接池最大阻塞等待时间（使用负值表示没有限制）
+          max-wait: -1ms
+          # 连接池中的最大空闲连接
+          max-idle: 10
+          # 连接池中的最小空闲连接
+          min-idle: 0
 
 
 sa-token:
@@ -95,3 +85,33 @@ sa-token:
   token-style: simple-uuid
   # 是否输出操作日志
   is-log: true
+
+dubbo:
+  application:
+    logger: slf4j
+    # 元数据中心 local 本地 remote 远程 这里使用远程便于其他服务获取
+    metadataType: remote
+    # 可选值 interface、instance、all，默认是 all，即接口级地址、应用级地址都注册
+    register-mode: instance
+  protocol:
+    # 设置为 tri 即可使用 Triple 3.0 新协议
+    # 性能对比 dubbo 协议并没有提升 但基于 http2 用于多语言异构等 http 交互场景
+    # 使用 dubbo 协议通信
+    name: dubbo
+    # dubbo 协议端口(-1表示自增端口,从20880开始)
+    port: -1
+  # 注册中心配置
+  registry:
+    address: nacos://${spring.cloud.nacos.discovery.server-addr}?namespace=${spring.cloud.nacos.discovery.namespace}
+    group: DUBBO_GROUP
+  # 消费者相关配置
+  consumer:
+    # 结果缓存(LRU算法)
+    # 会有数据不一致问题 建议在注解局部开启
+    cache: false
+    # 支持校验注解
+    validation: true
+    # 超时时间
+    timeout: 3000
+    # 初始化检查
+    check: false

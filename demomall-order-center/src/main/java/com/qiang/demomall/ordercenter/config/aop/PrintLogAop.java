@@ -2,6 +2,7 @@ package com.qiang.demomall.ordercenter.config.aop;
 
 import com.google.gson.Gson;
 import com.qiang.demomall.common.annotations.PrintLog;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -9,12 +10,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
 
 /**
  * @description 日志打印切面类
@@ -94,16 +95,22 @@ public class PrintLogAop {
         }
 
         public static void printParams(JoinPoint jp) {
-            HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+            String requestURI = "";
+            RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+            if (requestAttributes != null) {
+                HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+                requestURI = request.getRequestURI();
+            }
 
-            String requestURI = request.getRequestURI();
 
             String className = getClassName(jp.getTarget().getClass());
             String signatureName = jp.getSignature().getName();
             Object[] parames = jp.getArgs();
 
             StringBuilder builder = new StringBuilder();
-            builder.append("请求路径uri=").append(requestURI).append(",");
+            if (StringUtils.hasText(requestURI)) {
+                builder.append("请求路径uri=").append(requestURI).append(",");
+            }
             builder.append(className).append(".").append(signatureName);
             builder.append("::").append("请求参数==> ");
             if (parames != null) {

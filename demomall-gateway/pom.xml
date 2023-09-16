@@ -10,7 +10,7 @@
 
     <groupId>com.qiang</groupId>
     <artifactId>demomall-gateway</artifactId>
-    <version>${qiang.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>demomall-gateway</name>
 
@@ -95,7 +95,7 @@
 
         <dependency>
             <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-reactor-spring-boot-starter</artifactId>
+            <artifactId>sa-token-reactor-spring-boot3-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.dev33</groupId>

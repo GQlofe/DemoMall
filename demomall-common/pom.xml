@@ -10,7 +10,7 @@
 
     <groupId>com.qiang</groupId>
     <artifactId>demomall-common</artifactId>
-    <version>${qiang.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>demomall-common</name>
 
@@ -19,10 +19,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>

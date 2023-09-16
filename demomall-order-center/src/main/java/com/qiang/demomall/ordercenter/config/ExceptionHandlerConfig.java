@@ -3,6 +3,7 @@ package com.qiang.demomall.ordercenter.config;
 import com.qiang.demomall.common.enums.ErrorCodeEnum;
 import com.qiang.demomall.common.exceptions.MallException;
 import com.qiang.demomall.common.response.MallResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**

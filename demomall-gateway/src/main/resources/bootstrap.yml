@@ -6,3 +6,5 @@ spring:
       config:
         enabled: true
         server-addr: 127.0.0.1:8848
+        namespace: 65542590-44a1-4399-9107-16c7e7773e50
+        group: demomall-gateway

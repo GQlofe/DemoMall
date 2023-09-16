@@ -2,11 +2,11 @@ package com.qiang.demomall.usercenter.config.intercetpor;
 
 import com.qiang.demomall.common.context.ContextHolder;
 import com.qiang.demomall.common.context.UserContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @description 上下文拦截器
