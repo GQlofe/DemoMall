@@ -9,10 +9,10 @@
     </parent>
 
     <groupId>com.qiang</groupId>
-    <artifactId>demomall-product-center</artifactId>
+    <artifactId>demomall-payment-center</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>demomall-product-center</name>
+    <name>demomall-payment-center</name>
 
     <properties>
 

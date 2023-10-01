@@ -1,33 +1,20 @@
-package com.qiang.demomall.productcenter.repository.entity;
+package com.qiang.demomall.common.dto.productcenter;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 商品类目表
- * </p>
+ * @description 商品类目信息
  *
  * @author qiang
- * @since 2023-09-14
+ * @date 2023-10-01 23:24:43
  */
-@Getter
-@Setter
-@TableName("tb_product_category")
-public class ProductCategoryDO implements Serializable {
-
-    public static final long serialVersionUID = 1L;
-
+@Data
+public class CategoryDTO {
     /**
      * 商品类目id
      */
-    @TableId(value = "category_id", type = IdType.AUTO)
     private Long categoryId;
 
     /**

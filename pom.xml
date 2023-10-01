@@ -49,6 +49,7 @@
         <module>demomall-shop-center</module>
         <module>demomall-order-center</module>
         <module>demomall-product-center</module>
+        <module>demomall-payment-center</module>
     </modules>
 
 
